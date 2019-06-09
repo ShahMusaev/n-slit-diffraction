@@ -44,33 +44,33 @@
     border: 3px solid #000;background-color: white; border-radius: 10px" >
         <form>
             <div class="form-group">
-                <label for="lambda1" id="labelLambda1">Длина первой волны (нм):</label>
-                <input id="input_lam1" oninput="lambda1.value = input_lam1.value;updateChart()" type="text" value="600" style="width: 30px">
+                <label style="margin-top: 8px" for="lambda1" id="labelLambda1">Длина первой волны (нм):</label>
+                <input id="input_lam1" oninput="lambda1.value = input_lam1.value;updateChart()" type="text" value="600" style="width: 30px; border-radius: 5px; border: 1px solid; text-align: center">
                 <input type="range" oninput="input_lam1.value = lambda1.value;updateChart()"min="400" max="700" class="form-control-range" value="600" id="lambda1">
             </div>
             <div class="form-group">
                 <label for="lambda2" id="labelLambda2">Длина второй волны (нм):</label>
-                <input id="input_lam2" oninput="lambda2.value = input_lam2.value;updateChart()" type="text" value="451" style="width: 30px">
+                <input id="input_lam2" oninput="lambda2.value = input_lam2.value;updateChart()" type="text" value="451" style="width: 30px; border-radius: 5px; border: 1px solid; text-align: center">
                 <input type="range" oninput="input_lam2.value = lambda2.value;updateChart()" min="400" max="700" class="form-control-range" value="451" id="lambda2">
             </div>
             <div class="form-group">
                 <label for="N" id="labelN">Количество щелей:</label>
-                <input id="input_N" oninput="N.value = input_N.value;updateChart()" type="text" value="3" style="width: 30px">
+                <input id="input_N" oninput="N.value = input_N.value;updateChart()" type="text" value="3" style="width: 30px;border-radius: 5px; border: 1px solid; text-align: center">
                 <input type="range" oninput="input_N.value = N.value;updateChart()"min="1" max="20" class="form-control-range" value="3" id="N">
             </div>
             <div class="form-group">
                 <label for="a" id="labelA">Ширина щели (мкм):</label>
-                <input id="input_a" oninput="a.value = input_a.value;updateChart()" type="text" value="12" style="width: 30px">
+                <input id="input_a" oninput="a.value = input_a.value;updateChart()" type="text" value="12" style="width: 30px;border-radius: 5px; border: 1px solid; text-align: center">
                 <input type="range" oninput="input_a.value = a.value; updateChart()" min="1" max="50" class="form-control-range" value="12" id="a">
             </div>
             <div class="form-group">
                 <label for="b" id="labelB">Период решетки (мкм):</label>
-                <input id="input_b" oninput="b.value = input_b.value;updateChart()" type="text" value="25" style="width: 30px">
+                <input id="input_b" oninput="b.value = input_b.value;updateChart()" type="text" value="25" style="width: 30px;border-radius: 5px; border: 1px solid; text-align: center">
                 <input type="range" oninput="input_b.value = b.value;updateChart()" min="1" max="50" class="form-control-range" value="25" id="b">
             </div>
             <div class="form-group">
                 <label for="L" id="Length">Расстояние до экрана (м):</label>
-                <input id="input_L" oninput="L.value = input_L.value;updateChart()" type="text" value="1.8" style="width: 30px">
+                <input id="input_L" oninput="L.value = input_L.value;updateChart()" type="text" value="1.8" style="width: 30px;border-radius: 5px; border: 1px solid; text-align: center">
                 <input type="range" oninput="input_L.value = L.value;updateChart()" min="0.1" max="6.0" class="form-control-range" step="0.1" value="1.8" id="L">
             </div>
         </form>
