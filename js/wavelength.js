@@ -24,7 +24,7 @@
  */
 (function (namespace, methodName) {
   window[namespace][methodName] = function (wavelength) {
-    var w = parseInt(wavelength, 10),
+    let w = parseInt(wavelength, 10),
         SSS,
         R,
         G,
@@ -72,10 +72,80 @@
 
     SSS *= 255;
 
-    return {
-      red: parseInt(SSS * R, 10),
-      green: parseInt(SSS * G, 10),
-      blue: parseInt(SSS * B, 10)
-    };
+    return new RGBColor(parseInt(SSS * R, 10),
+        parseInt(SSS * G, 10),
+        parseInt(SSS * B, 10)
+    );
   };
 }("Math", "nmToRGB"));
+
+(function (namespace, methodName) {
+  window[namespace][methodName] = function (wavelength) {
+    let w = parseInt(wavelength, 10),
+        SSS,
+        R,
+        G,
+        B;
+
+    if (w >= 380 && w < 440)
+    {
+      R   = -(w - 440) / (440 - 380);
+      G = 0.0;
+      B  = 1.0;
+    }
+    else if (w >= 440 && w < 490)
+    {
+      R   = 0.0;
+      G = (w - 440) / (490 - 440);
+      B  = 1.0;
+    }
+    else if (w >= 490 && w < 510)
+    {
+      R   = 0.0;
+      G = 1.0;
+      B  = -(w - 510) / (510 - 490);
+    }
+    else if (w >= 510 && w < 580)
+    {
+      R   = (w - 510) / (580 - 510);
+      G = 1.0;
+      B  = 0.0;
+    }
+    else if (w >= 580 && w < 645)
+    {
+      R   = 1.0;
+      G = -(w - 645) / (645 - 580);
+      B  = 0.0;
+    }
+    else if (w >= 645 && w < 781)
+    {
+      R   = 1.0;
+      G = 0.0;
+      B  = 0.0;
+    }
+    else
+    {
+      R   = 0.0;
+      G = 0.0;
+      B  = 0.0;
+    }
+
+    // Let the intensity fall off near the vision limits
+
+    let factor = 0.0;
+
+    if (w >= 380 && w < 420)
+      factor = 0.3 + 0.7*(w - 380) / (420 - 380);
+    else if (w >= 420 && w < 701)
+      factor = 1.0;
+    else if (w >= 701 && w < 781)
+      factor = 0.3 + 0.7*(780 - w) / (780 - 700);
+
+    const gamma = 0.80;
+    const red = (R > 0 ? 255 * Math.pow(R * factor, gamma) : 0);
+    const green = (G > 0 ? 255 * Math.pow(G * factor, gamma) : 0);
+    const blue = (B > 0 ? 255 * Math.pow(B * factor, gamma) : 0);
+
+    return new RGBColor(red, green, blue);
+  };
+}("Math", "nmToRGB2"));
