@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">    <title>Title</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <title>Title</title>
+</head>
+<body id="gradient">
+<nav class="navbar navbar-default" role="navigation">
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Навигация</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="main.html">Optika</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="Mono.html">Монохромная</a></li>
+            <li><a href="Double.html">Дихромная</a></li>
+            <li><a href="Multi.html">Полихромная</a></li>
+        </ul>
+
+    </div>
+</div></nav>
+<!--<div id="gradient"></div>-->
+
+<div  style="position: absolute; width: 570px; left: 80px; top: 120px; height: 500px;
+    border: 3px solid #000;background-color: white; ;border-radius: 10px"  >
+        <canvas  id="interference_picture" width="497" height="80" style="background-color: black; position: absolute;
+        top: 400px ; left: 10px ;width: 497px; height: 80px "></canvas>
+        <canvas id="myChart" width="550" height="385" style="position: absolute;  left: 3px;width: 550px; height: 400px"></canvas>
+    </div>
+
+    <div class="container" id="content" style="width: 500px;  position: absolute; left: 800px; top: 200px
+    ; border: 3px solid #000;background-color: white; border-radius: 10px" >
+        <form>
+            <div class="form-group">
+                <label for="lambda" id="labelLambda" >Длина волны (нм):</label>
+                <input id="input_mono_wavelength" oninput="lambda.value = input_mono_wavelength.value;updateChart()" type="text" value="480" style="width: 30px">
+                <input  oninput="input_mono_wavelength.value = lambda.value;updateChart()" type="range"  min="400" max="700" class="form-control-range" value="480" id="lambda">
+            </div>
+            <div class="form-group">
+                <label for="N" id="labelN">Количество щелей:</label>
+                <input id="input_N" oninput="N.value = input_N.value;updateChart()" type="text" value="3" style="width: 30px">
+                <input type="range" oninput="input_N.value = N.value; updateChart()" min="1" max="20" class="form-control-range" value="3" id="N">
+            </div>
+            <div class="form-group">
+                <label for="a" id="labelA">Ширина щели (мкм):</label>
+                <input id="input_a" oninput="a.value = input_a.value;updateChart()" type="text" value="12" style="width: 30px">
+                <input type="range" oninput="input_a.value = a.value; updateChart()" min="1" max="50" class="form-control-range" value="12" id="a">
+            </div>
+            <div class="form-group">
+                <label for="b" id="labelB">Период решетки (мкм):</label>
+                <input id="input_b" oninput="b.value = input_b.value;updateChart()" type="text" value="25" style="width: 30px">
+                <input type="range" oninput="input_b.value = b.value; updateChart()" min="1" max="50" class="form-control-range" value="25" id="b">
+            </div>
+            <div class="form-group">
+                <label for="L" id="Length">Расстояние до экрана (м):</label>
+                <input id="input_L" oninput="L.value = input_L.value;updateChart()" type="text" value="1.8" style="width: 30px">
+                <input type="range" oninput="input_L.value = L.value; updateChart()"min="0.1" max="6.0" class="form-control-range" step="0.1" value="1.8" id="L">
+            </div>
+        </form>
+    </div>
+    <script src="Theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="Monowavelength.js"></script>
+    <script src="monoPicture.js"></script>
+    <script src="Color.js"></script>
+    <script src="MonoChart.js"></script>
+    <script src="MonoUpdate.js"></script>
+
+</body>
+</html>
